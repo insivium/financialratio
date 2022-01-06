@@ -1,11 +1,12 @@
-function port2
+ function port2
   % using the annualized rate formula : (((Final value/Present value)^1/n)-1)*100
   %where n is the time that the investment is held.
   % port2 will use input functions to calculate the sharpe ratio
   % Given the bigger data handle, my portfolio will only consist of 5 securites each
   
-  safe_rate=input('Please enter a risk-free rate for example the U.S Treasury Bill ;')
-  total=input('Please enter total investment amount for your first portfolio: ')
+  safe_rate=input('Please enter a risk-free rate in percentage, for example the U.S Treasury Bill ;');
+  per_rate=safe_rate/100;
+  total=input('Please enter total investment amount for your first portfolio: ');
   a=input('Please enter the duration of your first investment :');
   initial_1=input('Please enter the initial investment amount :');
   final_1=input('Please enter the final investment amount after appreciation and dividends :');
@@ -28,45 +29,53 @@ function port2
   % where n denotes time 
   
   
-  annual_1=((final_1/initial_1)^(1/a)-1)*100;
-  annual_2=((final_2/initial_2)^(1/b)-1)*100;
-  annual_3=((final_3/initial_3)^(1/c)-1)*100;
-  annual_4=((final_4/initial_4)^(1/d)-1)*100;
-  annual_5=((final_5/initial_5)^(1/e)-1)*100;
-  weight_1=(initial_1/total)/100;
-  weight_2=(initial_2/total)/100;
-  weight_3=(initial_3/total)/100;
-  weight_4=(initial_4/total)/100;
-  weight_5=(initial_5/total)/100;
+  annual_1=((final_1/initial_1)^(1/a)-1);
+  annual_2=((final_2/initial_2)^(1/b)-1);
+  annual_3=((final_3/initial_3)^(1/c)-1);
+  annual_4=((final_4/initial_4)^(1/d)-1);
+  annual_5=((final_5/initial_5)^(1/e)-1);
+  weight_1=(initial_1/total);
+  weight_2=(initial_2/total);
+  weight_3=(initial_3/total);
+  weight_4=(initial_4/total);
+  weight_5=(initial_5/total);
+  disp(weight_1)
   
   % Portfolio return is the average return of all securities in the portfolio
   % Its formula is the assets returns * the weight of the assets 
   % with respect to the total invested amount
   
-  portfolio=(annual_1*weight_1)+(annual_2*weight_2)+(annual_3*weight_3)+(annual_4*weight_4)+(annual_5*weight_5)
-  
+  portfolio=(annual_1*weight_1)+(annual_2*weight_2)+(annual_3*weight_3)+(annual_4*weight_4)+(annual_5*weight_5);
+  disp(portfolio)
   % Calculating financial ratio : the Sharpe ratio
   % R_p-R_f/standard deviation of return
   % Calculating standard deviation for Sharpe ratio
-  % The formula is: Σsqrt((r-r_avg)^2/n-1)
+  % The formula is: ?sqrt((r-r_avg)^2/n-1)
   % where r is rate of return 
   
   avg_return=(annual_1+annual_2+annual_3+annual_4+annual_5)/5;
+  disp(avg_return)
   
   % Calculating variance
   
-  variance=(annual_1-avg_return)^2+(annual_2-avg_return)^2+
-  (annual_3-avg_return)^2+(annual_4-avg_return)^2+(annual_5-avg_return)^2;
+  calc_1=(annual_1)^2-(avg_return)^2
+  calc_2=(annual_2)^2-(avg_return)^2
+  calc_3=(annual_3)^2-(avg_return)^2
+  calc_4=(annual_4)^2-(avg_return)^2
+  calc_5=(annual_5)^2-(avg_return)^2
+  variance=calc_1+calc_2+calc_3+calc_4+calc_5
   n_variance=variance/4;
+  disp(variance)
   
   % Calculating std
   
-  std=sqrt(n_variance)
+  std=sqrt(n_variance);
   
   % For the Sharpe ratio...
   
-  ratio=(portfolio-safe_rate)/std
-  disp(ratio)
+  ratio=portfolio-per_rate
+  std_ratio=ratio/std
+  disp(std_ratio)
   
   total_2=('Please enter total investment amount for your second portfolio :')
   f=input('Please enter the duration of your first investment for 2nd portfolio :');
