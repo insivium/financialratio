@@ -10,7 +10,7 @@ At the moment ,all the comments are included inside the program, in the near fut
 ## what needs to be done
 * coding of the tri-portfolio calculation :*port3*
 * coding of the quartet-portfolio calculation : *port4*
-* plotting codes(including bar chart with a line extended over the bars averages to create a curve.)
+* plotting chart codes.
 
 ## opening the file
 * First,unzip the file in a folder or on desktop.
