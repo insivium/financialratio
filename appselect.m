@@ -1,12 +1,12 @@
+% script to choose option from functions
 choices=ratioselect;
-while choices~=4;
+while choices~=3
 switch choices
   case 1
-    port2;
+    port2
   case 2
-    port3;
-  case 3 
-    port4;
-  end
+    port3
+end 
   choices=ratioselect;
 end
+
